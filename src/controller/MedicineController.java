@@ -12,6 +12,21 @@ public class MedicineController
     @postMapping
     public boolean addMedicine(@RequestBody Medicine medicine)
     {
-        if(medicine !=null && medicine)
+        if(medicine !=null && medicine.getMedicineId()>0)
+        {
+            medicineMap.put(medicine.getMedicineId,medicine);
+            return true;
+        }
+        return false;
+    }
+}
+@PutMapping("/{medicineId}")
+public Medicine updateMedicine(@PathVariable int medicineId, @RequestBody Medicine updatedMedicine)
+{
+    if(medicineMap.containsKey(medicineId)&& updatedMedicine!=null)
+    {
+        Medicine existingMedicine=medicineMap.get(medicineId);
+        existingMedicine.setMedicineName(updatedMedicine.getMedicineName());
+        existingMedicine.setPrice(updatedMedicine)
     }
 }
