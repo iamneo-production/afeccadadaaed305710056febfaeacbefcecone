@@ -19,7 +19,7 @@ public class MedicineController
         }
         return false;
     }
-}
+
 @PutMapping("/{medicineId}")
 public Medicine updateMedicine(@PathVariable int medicineId, @RequestBody Medicine updatedMedicine)
 {
@@ -27,6 +27,11 @@ public Medicine updateMedicine(@PathVariable int medicineId, @RequestBody Medici
     {
         Medicine existingMedicine=medicineMap.get(medicineId);
         existingMedicine.setMedicineName(updatedMedicine.getMedicineName());
-        existingMedicine.setPrice(updatedMedicine)
+        existingMedicine.setPrice(updatedMedicine.getPrice());
+        existingMedicine.setDescription(updatedMedicine.getDescription());
+        existingMedicine.setQuatity(updatedMedicine.getQuatity());
+        return existingMedicine;
     }
+    return null;
+}
 }
